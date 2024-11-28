@@ -1,0 +1,27 @@
+<launch>
+  <!-- Static Transform Publisher -->
+  <node pkg="tf" type="static_transform_publisher" name="map_to_base_link_broadcaster" args="0 0 0 0 0 0 map robot_base_link 100"/>
+
+  <!-- Move Base -->
+  <node name="move_base" pkg="move_base" type="move_base" output="screen">
+    <!-- Charger les configurations -->
+    <rosparam file="$(find robotnik_navigation)/config/costmap_common_params.yaml" command="load" />
+    <rosparam file="$(find robotnik_navigation)/config/global_costmap_params.yaml" command="load" />
+    <rosparam file="$(find robotnik_navigation)/config/local_costmap_params.yaml" command="load" />
+    <rosparam file="$(find robotnik_navigation)/config/base_local_planner_params.yaml" command="load" />
+
+    <!-- Remappage des topics -->
+    <remap from="odom" to="/dlo/odom" />
+    <remap from="cmd_vel" to="/robot/cmd_vel" />
+    <remap from="map" to="/robot/dlo/map_node/map" /> <!-- Remap du topic de la carte -->
+
+    <!-- Spécification de la frame globale et de la frame de base -->
+    <param name="global_frame" value="map" /> <!-- Utilisation de la frame 'map' -->
+    <param name="robot_base_frame" value="robot_base_link" />
+    
+    <!-- Autres paramètres pour la gestion des costmaps -->
+    <param name="global_costmap/global_frame" value="map" />
+    <param name="local_costmap/global_frame" value="map" />
+    <param name="local_costmap/robot_base_frame" value="robot_base_link" />
+  </node>
+</launch>

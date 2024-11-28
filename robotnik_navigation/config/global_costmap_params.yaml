@@ -1,0 +1,4 @@
+global_costmap:
+  global_frame: map  # Vérifie si "map" est utilisé comme frame
+  static_map: true
+  map_topic: /robot/dlo/map_node/map  # Remap du topic de la carte

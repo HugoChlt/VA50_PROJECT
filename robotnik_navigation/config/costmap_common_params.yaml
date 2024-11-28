@@ -1,0 +1,11 @@
+obstacle_range: 3.0
+raytrace_range: 4.0
+robot_radius: 0.3
+inflation_radius: 0.5
+footprint: [[-0.2, -0.3], [-0.2, 0.3], [0.3, 0.3], [0.3, -0.3]]
+observation_sources: laser_scan
+laser_scan:
+  data_type: PointCloud2
+  topic: /robot/robot_top_3d_laser/points
+  marking: true
+  clearing: true
