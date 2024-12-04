@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<launch>
+    <arg name="use_sim_time" default="true"/>
+    <arg name="pointcloud_topic" default="/robot/robot_top_3d_laser/points"/>
+    <arg name="scan_topic" default="/robot/front_laser/scan"/>
+    <arg name="target_frame" default="robot_base_link"/>
+
+    <node pkg="pointcloud_to_laserscan" type="pointcloud_to_laserscan_node" name="pointcloud_to_laserscan" output="screen">
+        <param name="use_sim_time" value="$(arg use_sim_time)"/>
+        <param name="min_height" value="0.1"/>
+        <param name="max_height" value="1.5"/>
+        <param name="angle_min" value="-1.5708"/> <!-- -90 degrees -->
+        <param name="angle_max" value="1.5708"/>  <!-- 90 degrees -->
+        <param name="angle_increment" value="0.0174533"/> <!-- 1 degree -->
+        <param name="scan_time" value="0.1"/>
+        <param name="range_min" value="0.1"/>
+        <param name="range_max" value="30.0"/>
+        <param name="target_frame" value="$(arg target_frame)"/>
+        <param name="transform_tolerance" value="0.01"/>
+        <remap from="cloud_in" to="$(arg pointcloud_topic)"/>
+        <remap from="scan" to="$(arg scan_topic)"/>
+    </node>
+</launch>
