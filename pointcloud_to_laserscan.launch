@@ -9,12 +9,12 @@
         <param name="use_sim_time" value="$(arg use_sim_time)"/>
         <param name="min_height" value="0.1"/>
         <param name="max_height" value="1.5"/>
-        <param name="angle_min" value="-1.5708"/> <!-- -90 degrees -->
-        <param name="angle_max" value="1.5708"/>  <!-- 90 degrees -->
-        <param name="angle_increment" value="0.0174533"/> <!-- 1 degree -->
+        <param name="angle_min" value="-3.141"/> <!-- -180 degrees -->
+        <param name="angle_max" value="3.141"/>  <!-- 180 degrees -->
+        <param name="angle_increment" value="0.00873"/> <!-- 0.5 degree -->
         <param name="scan_time" value="0.1"/>
         <param name="range_min" value="0.1"/>
-        <param name="range_max" value="30.0"/>
+        <param name="range_max" value="10.0"/>
         <param name="target_frame" value="$(arg target_frame)"/>
         <param name="transform_tolerance" value="0.01"/>
         <remap from="cloud_in" to="$(arg pointcloud_topic)"/>

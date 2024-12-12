@@ -198,10 +198,13 @@
 
         <!-- explore_lite -->
         <include if="$(arg launch_gmapping)" file="$(find summit_xl_gazebo)/launch/explore.launch">
-            <arg name="use_sim_time" value="true"/>
+            <!--arg name="use_sim_time" value="true"/>
             <arg name="global_frame" value="/robot/map"/>
             <arg name="robot_base_frame" value="robot_base_link"/>
-            <arg name="planner_topic" value="/robot/move_base/GlobalPlanner/plan"/>
+            <arg name="planner_topic" value="/robot/move_base/GlobalPlanner/plan"/-->
+        </include>
+
+        <include file="$(find direct_lidar_odometry)/launch/dlo.launch">
         </include>
 
         <!-- merge lasers -->
