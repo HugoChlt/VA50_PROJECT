@@ -1,0 +1,6 @@
+lier les frames robot_odom avec robot/robot/odom (matrice tf)
+faire correspondres les frames
+refaire marcher move_base
+dlo.launch à ajouter
+déplacement selon x, y avec move_base dans la map deja connue,
+et refaire des déplacements par la suite dans la nouvelle map pour la découvrir au total
